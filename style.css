@@ -7,7 +7,7 @@
 }
 
 @font-face {
-    font-family: "aoharu";
+    font-family: aoharu;
     src: url("./aoharu-marker-mini.ttf") format("truetype"),
          url("./aoharu-marker-mini.woff") format("woff");
 }
