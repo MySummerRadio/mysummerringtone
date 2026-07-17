@@ -3,11 +3,18 @@
     --sky-color-light: oklch(0.9 0.05 245.947);
     --grass-color: oklch(0.727 0.175 131.283);
     --grass-color-dark: oklch(0.6 0.175 131.283);
+    --pink: oklch(0.863 0.109 334.691);
+}
+
+@font-face {
+    font-family: "aoharu";
+    src: url("./aoharu-marker-mini.ttf") format("truetype"),
+         url("./aoharu-marker-mini.woff") format("woff");
 }
 
 body {
     background: linear-gradient(to bottom, #fff, var(--sky-color) 20%, var(--sky-color) 80%, var(--sky-color-light) 90%);
-    font-family: "Share Tech";
+    font-family: "aoharu";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto 1fr auto;
@@ -20,6 +27,10 @@ body {
 
 main {
     display: grid;
+
+    & > * {
+        grid-column: span 3;
+    }
 }
 
 #logo {
@@ -32,4 +43,21 @@ main {
     clip-path: url(#clip-grass);
     background: linear-gradient(to bottom, var(--grass-color), var(--grass-color-dark));
     height: 15vh;
+}
+
+.player {
+    width: 50vw;
+    display: flex;
+    place-self: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 16px;
+    border: 8px solid white;
+    border-radius: 4px;
+    box-shadow: 16px 12px 0 var(--pink);
+}
+
+.player svg {
+    filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 1));
 }
