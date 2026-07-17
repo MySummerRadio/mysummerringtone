@@ -1,1 +1,23 @@
+body {
+    background: linear-gradient(to bottom, #fff, #a1d1fc 25%);
+    font-family: "Share Tech";
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr 10%;
+    min-height: 100vh;
 
+    & > * {
+        grid-column: span 3;
+    }
+}
+
+img {
+    width: 80vw;
+    margin: auto;
+}
+
+.grass {
+    background-image: url("/grass.svg");
+    height: 20vh;
+    background-size: cover;
+}
