@@ -3,7 +3,7 @@ body {
     font-family: "Share Tech";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr 10%;
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
 
     & > * {
@@ -11,13 +11,18 @@ body {
     }
 }
 
-img {
-    width: 80vw;
-    margin: auto;
+main {
+    display: grid;
+}
+
+#logo {
+    width: 100vw;
+    max-width: 960px;
+    place-self: center;
 }
 
 .grass {
     background-image: url("/grass.svg");
-    height: 20vh;
     background-size: cover;
+    height: 15vh;
 }
