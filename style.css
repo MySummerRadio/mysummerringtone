@@ -1,5 +1,12 @@
+:root {
+    --sky-color: oklch(0.842 0.079 245.947);
+    --sky-color-light: oklch(0.9 0.05 245.947);
+    --grass-color: oklch(0.727 0.175 131.283);
+    --grass-color-dark: oklch(0.6 0.175 131.283);
+}
+
 body {
-    background: linear-gradient(to bottom, #fff, #a1d1fc 25%);
+    background: linear-gradient(to bottom, #fff, var(--sky-color) 20%, var(--sky-color) 80%, var(--sky-color-light) 90%);
     font-family: "Share Tech";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -22,7 +29,7 @@ main {
 }
 
 .grass {
-    background-image: url("/grass.svg");
-    background-size: cover;
+    clip-path: url(#clip-grass);
+    background: linear-gradient(to bottom, var(--grass-color), var(--grass-color-dark));
     height: 15vh;
 }
