@@ -9,11 +9,27 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Zen+Loop:ital@0;1&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="/style.css" />
         <link rel="stylesheet" href="/reset.css" />
+        <!-- Matomo -->
+        <script>
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//matomo.ruechappe.eu/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '7']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <!-- End Matomo Code -->
     </head>
     <body>
         <svg width="0" height="0" style="position:absolute;margin-left:-100%;">
@@ -32,17 +48,42 @@
         </svg>
 
         <header>
+            <img id="logo" src="/logo-white.webp" alt="my summer radio" />
         </header>
         <main>
-            <img id="logo" src="/logo-white.webp" alt="my summer radio" />
-            <p style="font-size: 32px; text-align: center;">YOUR NEW RINGTONE ;)</p>
+            <div class="text">
+                <h1>your summer ringtone ;)</h1>
+                <p style="font-family: Sansation, sans-serif; font-weight: 300;">Listen to it, then download it and use it on your phone</p>
+            </div>
             <div class="player">
-                <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#play"></use></g></svg>
-                <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#pause"></use></g></svg>
-                <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#download"></use></g></svg>
+                <audio id="ringtone" preload="metadata">
+                    <source src="/mysummerradio_10-07.mp3" type="audio/mp3">
+                </audio>
+                <div class="player-ctrls">
+                    <button class="play-btn">
+                        <span class="play-icon">
+                        <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#play"></use></g></svg></span>
+                        <span class="pause-icon" hidden>
+                        <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#pause"></use></g></svg></span>
+                    </button>
+                    <a href="/mysummerradio_10.07.mp3" download><button><svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#download"></use></g></svg></button></a>
+                </div>
             </div>
         </main>
         <footer class="grass">
+            <div class="text">
+                <p>Website coming soon · you will know on <a href="https://www.instagram.com/mysummerradio">instagram</a></p>
+            </div>
         </footer>
     </body>
 </html>
+<script src="/index.js" type="module"></script>
+<script>
+// Initialize player
+document.addEventListener('DOMContentLoaded', () => {
+  const playerElement = document.querySelector('.audio-player');
+  if (playerElement) {
+    new AudioPlayer(playerElement);
+  }
+});
+</script>

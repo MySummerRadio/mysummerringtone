@@ -1,9 +1,18 @@
 :root {
-    --sky-color: oklch(0.842 0.079 245.947);
+    --sky-color: oklch(0.842 0.079 245.947); /* #a1d1fc */
     --sky-color-light: oklch(0.9 0.05 245.947);
-    --grass-color: oklch(0.727 0.175 131.283);
+    --grass-color: oklch(0.727 0.175 131.283); /* #7ebc35 */
     --grass-color-dark: oklch(0.6 0.175 131.283);
-    --pink: oklch(0.863 0.109 334.691);
+    /* Complementary color of --sky-color */
+    --earth-color: oklch(0.28 0.06 71.491); /* #3b2300 */
+    /* triadic paletton */
+    --white: oklch(1 0 0);
+    --pink: oklch(0.863 0.109 334.691); /* #ffb7ef */
+    --yellow: oklch(0.961 0.138 105.627);
+    --green: oklch(0.92 0.177 136.335);
+
+    --text-color: var(--earth-color);
+    --player-btn-bg: var(--sky-color-light);
 }
 
 @font-face {
@@ -12,29 +21,67 @@
          url("./aoharu-marker-mini.woff") format("woff");
 }
 
+@font-face {
+    font-family: Feltpen;
+    src: url("./Feltpen.ttf") format("truetype"),
+         url("./Feltpen.woff") format("woff"),
+         url("./Feltpen.woff2") format("woff2");
+}
+
+
 body {
-    background: linear-gradient(to bottom, #fff, var(--sky-color) 20%, var(--sky-color) 80%, var(--sky-color-light) 90%);
-    font-family: "aoharu";
+    background: linear-gradient(to bottom, #fff, var(--sky-color) 15%, var(--sky-color) 80%, var(--sky-color-light) 90%);
+    font-family: var(--font);
+    font-weight: 400;
+    color: var(--text-color);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: auto 66vw auto;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
+    --font: "Zen Loop", cursive;
 
     & > * {
         grid-column: span 3;
+    }
+
+    main {
+        grid-column: 2;
+        display: grid;
+        place-items: center;
+        text-align: center;
+
+
     }
 }
 
-main {
+footer {
+    color: var(--white);
     display: grid;
+    text-align: center;
+    align-items: end;
+    padding: 1rem;
+}
 
-    & > * {
-        grid-column: span 3;
-    }
+h1 {
+    font-family: var(--font);
+    font-size: clamp(1.875rem, 1.2674rem + 2.5581vw, 3.25rem);
+    color: var(--white);
+    text-shadow: 0 0 8px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+}
+
+a {
+    text-decoration-thickness: 1px;
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: all;
+    text-underline-offset: 2px;
 }
 
 #logo {
-    width: 100vw;
+    padding-block-start: 5vh;
+    grid-column: span 3;
+    width: 85vw;
     max-width: 960px;
     place-self: center;
 }
@@ -43,21 +90,49 @@ main {
     clip-path: url(#clip-grass);
     background: linear-gradient(to bottom, var(--grass-color), var(--grass-color-dark));
     height: 15vh;
+
+    @media (max-width: 400px) {
+        clip-path: none;
+    }
 }
 
 .player {
-    width: 50vw;
+    width: clamp(170px, 33vw, 600px);
     display: flex;
     place-self: center;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
     padding: 16px;
-    border: 8px solid white;
+    border: 8px solid var(--white);
     border-radius: 4px;
     box-shadow: 16px 12px 0 var(--pink);
+
+    .file {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
 }
 
 .player svg {
-    filter: drop-shadow(2px 2px 0 rgba(255, 255, 255, 1));
+    filter: drop-shadow(2px 2px 0 var(--white));
+}
+.player-ctrls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    button {
+        background: var(--player-btn-bg);
+        border: 1px solid var(--white);
+        border-radius: 2px;
+        cursor: pointer;
+        padding: 0.2em;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            box-shadow: 3px 2px 0 var(--white);
+        }
+
+    }
 }
