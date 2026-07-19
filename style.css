@@ -28,8 +28,9 @@
          url("./Feltpen.woff2") format("woff2");
 }
 
-
 body {
+    --font: "aoharu", cursive;
+
     background: linear-gradient(to bottom, #fff, var(--sky-color) 15%, var(--sky-color) 80%, var(--sky-color-light) 90%);
     font-family: var(--font);
     font-weight: 400;
@@ -38,7 +39,6 @@ body {
     grid-template-columns: auto 66vw auto;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    --font: "Zen Loop", cursive;
 
     & > * {
         grid-column: span 3;
@@ -67,7 +67,7 @@ h1 {
     font-size: clamp(1.875rem, 1.2674rem + 2.5581vw, 3.25rem);
     color: var(--white);
     text-shadow: 0 0 8px;
-    letter-spacing: 0.08em;
+    /*letter-spacing: -0.08em;*/
     font-weight: 400;
 }
 
