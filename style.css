@@ -92,6 +92,7 @@ a {
     width: 85vw;
     max-width: 960px;
     place-self: center;
+    margin: 0 auto;
 }
 
 .grass {
