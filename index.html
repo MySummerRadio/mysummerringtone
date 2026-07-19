@@ -60,13 +60,15 @@
                     <source src="/mysummerradio_10-07.mp3" type="audio/mp3">
                 </audio>
                 <div class="player-ctrls">
-                    <button class="play-btn">
+                    <button class="play-btn" data-hover-popover="play-pause-popover">
                         <span class="play-icon">
                         <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#play"></use></g></svg></span>
                         <span class="pause-icon" hidden>
                         <svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#pause"></use></g></svg></span>
                     </button>
-                    <a href="/mysummerradio_10-07.mp3" download><button><svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#download"></use></g></svg></button></a>
+                    <a href="/mysummerradio_10-07.mp3" download><button data-hover-popover="download-popover"><svg viewBox="0 0 256 256" width="32" height="32" style="fill:#ffb7ef;"><g filter="url(#shadow)"><use href="#download"></use></g></svg></button></a>
+                    <div class="tooltip" id="play-pause-popover" popover><b>PLAY/PAUSE</b></div>
+                    <div class="tooltip" id="download-popover" popover><b>DOWNLOAD</b></div>
                 </div>
             </div>
         </main>
@@ -84,6 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerElement = document.querySelector('.audio-player');
   if (playerElement) {
     new AudioPlayer(playerElement);
+  }
+});
+// Popovers
+document.querySelectorAll('[data-hover-popover]').forEach((anchor) => {
+  const popoverId = anchor.dataset.hoverPopover;
+  const popover = document.getElementById(popoverId);
+  if (popover) {
+    anchor.onmouseenter = event => {
+      popover.showPopover();
+    };
+    anchor.onmouseleave = event => {
+      popover.hidePopover();
+    };
   }
 });
 </script>
