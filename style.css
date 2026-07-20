@@ -133,11 +133,11 @@ a {
     align-items: center;
     gap: 1rem;
     button {
+        aspect-ratio: 1 / 1;
         background: var(--player-btn-bg);
         border: 1px solid var(--white);
         border-radius: 2px;
         cursor: pointer;
-        padding: 0.2em;
         transition: all 0.2s ease-in-out;
 
         &:hover {
